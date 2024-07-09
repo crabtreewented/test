@@ -147,6 +147,19 @@
     }
 
     imageDisplay.addEventListener('click', showNextImage);
+
+            // Dark mode toggle functionality
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    });
+
+    // Check for saved user preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        body.classList.add('dark-mode');
     </script>
 </body>
 </html>
