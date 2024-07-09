@@ -2,24 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Image Display</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
         #imageDisplay {
             cursor: pointer;
-            min-height: 100px;
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
             border: 1px solid #ccc;
+            border-radius: 10px;
             padding: 20px;
-            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
         }
         img {
             max-width: 100%;
             height: auto;
+            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            #imageDisplay {
+                width: 95%;
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="imageDisplay">Click to start</div>
+    <script>
     <div id="imageDisplay">Click to start</div>
     <script>
     const imageFiles = [
