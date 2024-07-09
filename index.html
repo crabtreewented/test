@@ -3,16 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Text Webpage</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sequential and Random Text Display</title>
+    <style>
+        #textDisplay {
+            cursor: pointer;
+            min-height: 50px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <div id="content">
-        <p id="fixed-text-1">This is the first fixed text.</p>
-        <p id="fixed-text-2">This is the second fixed text.</p>
-        <p id="dynamic-text"></p>
-        <p id="last-text">This is always the last text.</p>
-    </div>
-    <script src="script.js"></script>
+    <div id="textDisplay">Click to start</div>
+
+    <script>
+        const texts = [
+            "Text 1",
+            "Text 2",
+            "Text 3", "Text 4", "Text 5", /* ... add all your texts up to 49 here ... */
+            "Text 50"
+        ];
+
+        const textDisplay = document.getElementById('textDisplay');
+        let currentIndex = 0;
+        let randomTexts = [];
+
+        function showNextText() {
+            if (currentIndex < 2) {
+                // Show first two texts sequentially
+                textDisplay.textContent = texts[currentIndex];
+                currentIndex++;
+            } else if (currentIndex < texts.length - 1) {
+                // Show random text from 3 to 49
+                if (randomTexts.length === 0) {
+                    // If we've shown all random texts, reset the array
+                    randomTexts = texts.slice(2, -1).sort(() => Math.random() - 0.5);
+                }
+                textDisplay.textContent = randomTexts.pop();
+                currentIndex++;
+            } else {
+                // Show the last text
+                textDisplay.textContent = texts[texts.length - 1];
+                // Reset for next round
+                currentIndex = 0;
+                randomTexts = [];
+            }
+        }
+
+        textDisplay.addEventListener('click', showNextText);
+    </script>
 </body>
 </html>
