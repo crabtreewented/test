@@ -34,30 +34,6 @@
             height: auto;
             border-radius: 5px;
         }
-        #darkModeToggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .dark-mode {
-            background-color: #333;
-            color: #f0f0f0;
-        }
-        .dark-mode #imageDisplay {
-            background-color: #444;
-            border-color: #555;
-            color: #f0f0f0;
-        }
-        .dark-mode #darkModeToggle {
-            background-color: #f0f0f0;
-            color: #333;
-        }
         @media (max-width: 600px) {
             #imageDisplay {
                 width: 95%;
@@ -67,7 +43,6 @@
     </style>
 </head>
 <body>
-    <button id="darkModeToggle">"^"</button>
     <div id="imageDisplay">TEST</div>
     <script>
     const imageFiles = [
@@ -147,19 +122,6 @@
     }
 
     imageDisplay.addEventListener('click', showNextImage);
-
-            // Dark mode toggle functionality
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
-    });
-
-    // Check for saved user preference
-    if (localStorage.getItem('darkMode') === 'true') {
-        body.classList.add('dark-mode');
     </script>
 </body>
 </html>
