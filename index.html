@@ -10,10 +10,12 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
         }
         #imageDisplay {
             cursor: pointer;
@@ -25,11 +27,36 @@
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 0px;
+            border-radius: 5px;
+        }
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+        .dark-mode #imageDisplay {
+            background-color: #444;
+            border-color: #555;
+            color: #f0f0f0;
+        }
+        .dark-mode #darkModeToggle {
+            background-color: #f0f0f0;
+            color: #333;
         }
         @media (max-width: 600px) {
             #imageDisplay {
@@ -40,6 +67,7 @@
     </style>
 </head>
 <body>
+    <button id="darkModeToggle">"^"</button>
     <div id="imageDisplay">TEST</div>
     <script>
     const imageFiles = [
