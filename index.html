@@ -1,57 +1,73 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sequential and Random Text Display</title>
+    <title>Poetry Display</title>
     <style>
-        #textDisplay {
+        #poemDisplay {
             cursor: pointer;
-            min-height: 50px;
+            min-height: 100px;
             border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 20px;
+            margin: 20px 0;
+            white-space: pre-wrap;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
 <body>
-    <div id="textDisplay">Click to start</div>
+    <div id="poemDisplay">Click to start</div>
 
     <script>
-        const texts = [
-            "But some of the semi detached when they applied the render they left clefts of stones uncovered and across the wall from a distance, they looked as if they were falling like Tetris blocks",
-            "Text 2",
-            "Text 3", "Text 4", "Text 5", /* ... add all your texts up to 49 here ... */
-            "Text 50"
-        ];
+    const poems = [
+        `<h2>First Poem</h2>
+Line 1 of first poem
+Line 2 of first poem
+    Indented line`,
 
-        const textDisplay = document.getElementById('textDisplay');
-        let currentIndex = 0;
-        let randomTexts = [];
+        `<h2>Second Poem</h2>
+Line 1 of second poem
+Line 2 of second poem
+    Indented line`,
 
-        function showNextText() {
-            if (currentIndex < 2) {
-                // Show first two texts sequentially
-                textDisplay.textContent = texts[currentIndex];
-                currentIndex++;
-            } else if (currentIndex < texts.length - 1) {
-                // Show random text from 3 to 49
-                if (randomTexts.length === 0) {
-                    // If we've shown all random texts, reset the array
-                    randomTexts = texts.slice(2, -1).sort(() => Math.random() - 0.5);
-                }
-                textDisplay.textContent = randomTexts.pop();
-                currentIndex++;
-            } else {
-                // Show the last text
-                textDisplay.textContent = texts[texts.length - 1];
-                // Reset for next round
-                currentIndex = 0;
-                randomTexts = [];
+        // Add your 47 random poems here, preserving their formatting
+
+        `<h2>Last Poem</h2>
+Line 1 of last poem
+Line 2 of last poem
+    Indented line`
+    ];
+
+    const poemDisplay = document.getElementById('poemDisplay');
+    let currentIndex = 0;
+    let randomPoems = [];
+
+    function showNextPoem() {
+        if (currentIndex < 2) {
+            // Show first two poems sequentially
+            poemDisplay.innerHTML = poems[currentIndex];
+            currentIndex++;
+        } else if (currentIndex < poems.length - 1) {
+            // Show random poem from 3 to 49
+            if (randomPoems.length === 0) {
+                // If we've shown all random poems, reset the array
+                randomPoems = poems.slice(2, -1).sort(() => Math.random() - 0.5);
             }
+            poemDisplay.innerHTML = randomPoems.pop();
+            currentIndex++;
+        } else {
+            // Show the last poem
+            poemDisplay.innerHTML = poems[poems.length - 1];
+            // Reset for next round
+            currentIndex = 0;
+            randomPoems = [];
         }
+    }
 
-        textDisplay.addEventListener('click', showNextText);
+    poemDisplay.addEventListener('click', showNextPoem);
     </script>
 </body>
 </html>
+```
