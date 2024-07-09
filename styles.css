@@ -8,6 +8,20 @@ body {
     background-color: #f0f0f0;
 }
 
+css
+.poem {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.poem pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 #content {
     background-color: white;
     padding: 20px;
