@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="sherbetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9AA2">
+        <animate attributeName="stop-color" values="#FF9AA2; #FFB7B2; #FFDAC1; #E2F0CB; #B5EAD7; #C7CEEA; #FFA07A; #98FF98; #DDA0DD; #87CEFA; #F0E68C; #FF9AA2" dur="30s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#FFB7B2">
+        <animate attributeName="stop-color" values="#FFB7B2; #FFDAC1; #E2F0CB; #B5EAD7; #C7CEEA; #FFA07A; #98FF98; #DDA0DD; #87CEFA; #F0E68C; #FF9AA2; #FFB7B2" dur="30s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+      <feBlend mode="overlay" in2="SourceGraphic" />
+    </filter>
+    
+    <mask id="sherbetMask">
+      <rect width="100%" height="100%" fill="white" />
+      <rect width="100%" height="100%" fill="black" filter="url(#noise)" opacity="0.3" />
+    </mask>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#sherbetGradient)" />
+  <rect width="100%" height="100%" fill="url(#sherbetGradient)" mask="url(#sherbetMask)" />
+</svg>
