@@ -2,38 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Text with Sherbet Background</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Image Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #imageDisplay {
+            cursor: pointer;
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            #imageDisplay {
+                width: 95%;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <svg id="sherbet-background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
-        <defs>
-            <linearGradient id="sherbetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FF9AA2">
-                    <animate attributeName="stop-color" values="#FF9AA2; #FFB7B2; #FFDAC1; #E2F0CB; #B5EAD7; #C7CEEA; #FFA07A; #98FF98; #DDA0DD; #87CEFA; #F0E68C; #FF9AA2" dur="30s" repeatCount="indefinite" />
-                </stop>
-                <stop offset="100%" stop-color="#FFB7B2">
-                    <animate attributeName="stop-color" values="#FFB7B2; #FFDAC1; #E2F0CB; #B5EAD7; #C7CEEA; #FFA07A; #98FF98; #DDA0DD; #87CEFA; #F0E68C; #FF9AA2; #FFB7B2" dur="30s" repeatCount="indefinite" />
-                </stop>
-            </linearGradient>
-            <filter id="noise" x="0%" y="0%" width="100%" height="100%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-                <feColorMatrix type="saturate" values="0" />
-                <feBlend mode="overlay" in2="SourceGraphic" />
-            </filter>
-            <mask id="sherbetMask">
-                <rect width="100%" height="100%" fill="white" />
-                <rect width="100%" height="100%" fill="black" filter="url(#noise)" opacity="0.3" />
-            </mask>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#sherbetGradient)" />
-        <rect width="100%" height="100%" fill="url(#sherbetGradient)" mask="url(#sherbetMask)" />
-    </svg>
-    <div id="content">
-        <h1>Dynamic Text</h1>
-        <p id="dynamic-text"></p>
-    </div>
-    <script src="script.js"></script>
+    <div id="imageDisplay">Click to start</div>
+    <script>
+    const imageFiles = [
+        "Test 20240512 -1.2 -pages-images-0.jpg",
+        "Test 20240512 -1.2 -pages-images-1.jpg",
+        "Test 20240512 -1.2 -pages-images-2.jpg",
+        "Test 20240512 -1.2 -pages-images-3.jpg",
+        "Test 20240512 -1.2 -pages-images-4.jpg",
+        "Test 20240512 -1.2 -pages-images-5.jpg",
+        "Test 20240512 -1.2 -pages-images-6.jpg",
+        "Test 20240512 -1.2 -pages-images-7.jpg",
+        "Test 20240512 -1.2 -pages-images-8.jpg",
+        "Test 20240512 -1.2 -pages-images-9.jpg",
+        "Test 20240512 -1.2 -pages-images-10.jpg",
+        "Test 20240512 -1.2 -pages-images-11.jpg",
+        "Test 20240512 -1.2 -pages-images-12.jpg",
+        "Test 20240512 -1.2 -pages-images-13.jpg",
+        "Test 20240512 -1.2 -pages-images-14.jpg",
+        "Test 20240512 -1.2 -pages-images-15.jpg",
+        "Test 20240512 -1.2 -pages-images-16.jpg",
+        "Test 20240512 -1.2 -pages-images-17.jpg",
+        "Test 20240512 -1.2 -pages-images-18.jpg",
+        "Test 20240512 -1.2 -pages-images-19.jpg",
+        "Test 20240512 -1.2 -pages-images-20.jpg",
+        "Test 20240512 -1.2 -pages-images-21.jpg",
+        "Test 20240512 -1.2 -pages-images-22.jpg",
+        "Test 20240512 -1.2 -pages-images-23.jpg",
+        "Test 20240512 -1.2 -pages-images-24.jpg",
+        "Test 20240512 -1.2 -pages-images-25.jpg",
+        "Test 20240512 -1.2 -pages-images-26.jpg",
+        "Test 20240512 -1.2 -pages-images-27.jpg",
+        "Test 20240512 -1.2 -pages-images-28.jpg",
+        "Test 20240512 -1.2 -pages-images-29.jpg",
+        "Test 20240512 -1.2 -pages-images-30.jpg",
+        "Test 20240512 -1.2 -pages-images-31.jpg",
+        "Test 20240512 -1.2 -pages-images-32.jpg",
+        "Test 20240512 -1.2 -pages-images-33.jpg",
+        "Test 20240512 -1.2 -pages-images-34.jpg",
+        "Test 20240512 -1.2 -pages-images-35.jpg",
+        "Test 20240512 -1.2 -pages-images-36.jpg",
+        "Test 20240512 -1.2 -pages-images-37.jpg",
+        "Test 20240512 -1.2 -pages-images-38.jpg",
+        "Test 20240512 -1.2 -pages-images-39.jpg",
+        "Test 20240512 -1.2 -pages-images-40.jpg",
+        "Test 20240512 -1.2 -pages-images-41.jpg",
+        "Test 20240512 -1.2 -pages-images-42.jpg",
+        "Test 20240512 -1.2 -pages-images-43.jpg",
+        "Test 20240512 -1.2 -pages-images-44.jpg",
+        "Test 20240512 -1.2 -pages-images-45.jpg",
+        "Test 20240512 -1.2 -pages-images-46.jpg",
+        "Test 20240512 -1.2 -pages-images-47.jpg",
+        "Test 20240512 -1.2 -pages-images-48.jpg",
+        "Test 20240512 -1.2 -pages-images-49.jpg"
+    ];
+    const imageDisplay = document.getElementById('imageDisplay');
+    let currentIndex = 0;
+    let randomImages = [];
+
+    function showNextImage() {
+        let imageFile;
+        if (currentIndex < 2) {
+            imageFile = imageFiles[currentIndex];
+            currentIndex++;
+        } else if (currentIndex < imageFiles.length - 1) {
+            if (randomImages.length === 0) {
+                randomImages = imageFiles.slice(2, -1).sort(() => Math.random() - 0.5);
+            }
+            imageFile = randomImages.pop();
+            currentIndex++;
+        } else {
+            imageFile = imageFiles[imageFiles.length - 1];
+            currentIndex = 0;
+            randomImages = [];
+        }
+        
+        imageDisplay.innerHTML = `<img src="${imageFile}" alt="Random Image">`;
+    }
+
+    imageDisplay.addEventListener('click', showNextImage);
+    </script>
 </body>
 </html>
